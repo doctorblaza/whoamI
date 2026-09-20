@@ -161,7 +161,9 @@ function getSlots() {
 }
 function setSlots(s) { localStorage.setItem('whoami_slots', JSON.stringify(s)); }
 function snapshot() {
-  const idx = S.mode === 'choice' ? S.index - 1 : S.index;
+  // S.index always points at the NEXT command to run; the passage currently
+  // on screen is S.index - 1, so a load must re-display exactly that one.
+  const idx = S.index - 1;
   return { label: S.label, index: idx, bg: S.bg,
            preview: (S.fullText || '').slice(0, 26), time: Date.now() };
 }
