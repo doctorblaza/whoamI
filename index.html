@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>whoamI</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="stage">
+  <div id="bg-a" class="bg"></div>
+  <div id="bg-b" class="bg"></div>
+
+  <div id="chapter-card" class="hidden"><div id="chapter-text"></div></div>
+
+  <div id="title-screen">
+    <div class="title-inner">
+      <h1>whoamI</h1>
+      <p class="subtitle">我是谁</p>
+      <div class="menu">
+        <button id="btn-start">开始游戏</button>
+        <button id="btn-continue">继续游戏</button>
+      </div>
+      <p class="hint">建议佩戴耳机 &nbsp;·&nbsp; 点击 / 空格 推进剧情</p>
+      <p class="credit">第一人称恐怖悬疑 · 原文一字不改 · Music by Myuu</p>
+    </div>
+  </div>
+
+  <div id="dialogue" class="hidden">
+    <div id="speaker"></div>
+    <div id="text"></div>
+    <div id="next-indicator">▼</div>
+  </div>
+
+  <div id="choices" class="hidden"></div>
+
+  <div id="toolbar" class="hidden">
+    <button id="btn-save">存档</button>
+    <button id="btn-load">读档</button>
+    <button id="btn-music">音乐:开</button>
+    <button id="btn-title">标题</button>
+  </div>
+
+  <div id="slot-modal" class="hidden">
+    <div class="slot-box">
+      <h3 id="slot-title">存档</h3>
+      <div id="slots"></div>
+      <button id="slot-close">关闭</button>
+    </div>
+  </div>
+
+  <div id="end-screen" class="hidden">
+    <div class="end-inner">
+      <h2>whoamI · 完</h2>
+      <p class="end-sub">你是谁。</p>
+      <button id="btn-back-title">返回标题</button>
+    </div>
+  </div>
+</div>
+<script src="js/music.js"></script>
+<script src="js/story.js"></script>
+<script src="js/engine.js"></script>
+</body>
+</html>
