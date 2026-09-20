@@ -1,0 +1,77 @@
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html,body { height:100%; background:#000; overflow:hidden; }
+body { font-family:"Songti SC","STSong","Noto Serif CJK SC","SimSun",serif; color:#e8e4da; user-select:none; }
+
+#stage { position:fixed; inset:0; overflow:hidden; cursor:pointer; }
+.bg { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity 1.4s ease; }
+#bg-a { opacity:1; }
+
+.hidden { display:none !important; }
+
+/* ---------- title ---------- */
+#title-screen { position:absolute; inset:0; z-index:30; display:flex; align-items:center; justify-content:center;
+  background:rgba(0,0,0,.45); }
+.title-inner { text-align:center; }
+#title-screen h1 { font-size:clamp(56px,10vw,110px); font-weight:400; letter-spacing:.3em; text-indent:.3em; color:#f2eee2;
+  text-shadow:0 2px 24px rgba(0,0,0,.8); }
+.subtitle { margin-top:10px; letter-spacing:.6em; text-indent:.6em; font-size:clamp(12px,2vw,16px); color:#9a958a; }
+.menu { margin-top:48px; display:flex; flex-direction:column; gap:14px; align-items:center; }
+.menu button, #end-screen button, .slot-box > button {
+  background:transparent; border:1px solid #8a857a; color:#e8e4da; padding:12px 54px;
+  font-size:17px; letter-spacing:.35em; text-indent:.35em; cursor:pointer; font-family:inherit;
+  transition:background .25s,color .25s; min-width:240px; }
+.menu button:hover, #end-screen button:hover, .slot-box > button:hover { background:#e8e4da; color:#111; }
+.hint { margin-top:34px; font-size:13px; color:#7d786d; letter-spacing:.15em; }
+.credit { margin-top:10px; font-size:11px; color:#5d594f; letter-spacing:.08em; }
+
+/* ---------- dialogue ---------- */
+#dialogue { position:absolute; left:0; right:0; bottom:0; z-index:20; min-height:30%;
+  background:linear-gradient(to top, rgba(0,0,0,.88) 60%, rgba(0,0,0,.55) 85%, transparent);
+  padding:56px 8% 42px; }
+#speaker { font-size:15px; letter-spacing:.4em; color:#b8b2a4; margin-bottom:12px; min-height:20px; }
+#speaker:empty { display:none; }
+#text { font-size:clamp(17px,2.4vw,21px); line-height:2.1; letter-spacing:.06em; min-height:3.2em; white-space:pre-wrap; }
+#next-indicator { position:absolute; right:6%; bottom:18px; color:#8a857a; font-size:14px; opacity:0;
+  animation:bob 1.2s ease-in-out infinite; }
+@keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
+
+/* ---------- choices ---------- */
+#choices { position:absolute; inset:0; z-index:25; display:flex; flex-direction:column; gap:16px;
+  align-items:center; justify-content:center; background:rgba(0,0,0,.45); padding:0 12%; }
+#choices button { background:rgba(10,10,12,.82); border:1px solid #6f6a5e; color:#e8e4da;
+  padding:15px 30px; font-size:clamp(15px,2.2vw,18px); letter-spacing:.12em; cursor:pointer;
+  font-family:inherit; width:min(560px,100%); transition:background .25s,color .25s,border-color .25s; }
+#choices button:hover { background:#e8e4da; color:#111; border-color:#e8e4da; }
+
+/* ---------- toolbar ---------- */
+#toolbar { position:absolute; top:12px; right:12px; z-index:26; display:flex; gap:8px; }
+#toolbar button { background:rgba(0,0,0,.55); border:1px solid #55504a; color:#cfc9bb;
+  font-size:13px; letter-spacing:.2em; padding:8px 14px; cursor:pointer; font-family:inherit; }
+#toolbar button:hover { background:#e8e4da; color:#111; }
+
+/* ---------- slots ---------- */
+#slot-modal { position:absolute; inset:0; z-index:40; background:rgba(0,0,0,.7);
+  display:flex; align-items:center; justify-content:center; }
+.slot-box { background:#101013; border:1px solid #3a372f; padding:30px 34px; width:min(480px,90vw); text-align:center; }
+.slot-box h3 { letter-spacing:.5em; text-indent:.5em; margin-bottom:20px; font-weight:400; }
+.slot { border:1px solid #3a372f; padding:14px 16px; margin-bottom:10px; cursor:pointer; text-align:left;
+  transition:border-color .2s, background .2s; }
+.slot:hover { border-color:#8a857a; background:#17171b; }
+.slot .slot-no { font-size:13px; color:#8a857a; letter-spacing:.3em; }
+.slot .slot-preview { margin-top:6px; font-size:15px; color:#e8e4da; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.slot .slot-time { margin-top:4px; font-size:12px; color:#6f6a5e; }
+.slot.empty .slot-preview { color:#55504a; }
+.slot-box > button { margin-top:14px; min-width:0; padding:10px 40px; font-size:15px; }
+
+/* ---------- chapter card ---------- */
+#chapter-card { position:absolute; inset:0; z-index:35; background:#000;
+  display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity .8s ease; pointer-events:none; }
+#chapter-card.show { opacity:1; }
+#chapter-text { font-size:clamp(26px,5vw,44px); letter-spacing:.5em; text-indent:.5em; color:#e8e4da; font-weight:400; }
+
+/* ---------- end ---------- */
+#end-screen { position:absolute; inset:0; z-index:30; background:rgba(0,0,0,.72);
+  display:flex; align-items:center; justify-content:center; }
+.end-inner { text-align:center; }
+#end-screen h2 { font-size:clamp(34px,6vw,58px); font-weight:400; letter-spacing:.3em; text-indent:.3em; }
+.end-sub { margin:16px 0 40px; color:#9a958a; letter-spacing:.3em; font-size:15px; }
